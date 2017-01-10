@@ -7,7 +7,7 @@
 # Licence    : ---
 # -------------------------------------------------------------------------
 # File       : owserver/Dockerfile-rpi
-# Version    : 0.1.0
+# Version    : 0.1.1
 # Author     : Bjorn Kjeholt
 # *************************************************************************
  
@@ -21,7 +21,17 @@ RUN apt-get update && \
                        owserver && \
     rm -rf /var/lib/apt/lists*
 
+ARG DOCKER_IMAGE_NAME
+ARG DOCKER_IMAGE_TAG
+
+ENV DOCKER_BASE_IMAGE_NAME na
+ENV DOCKER_BASE_IMAGE_TAG na
+
+ENV DOCKER_IMAGE_NAME ${DOCKER_IMAGE_NAME:-UnknownName}
+ENV DOCKER_IMAGE_TAG ${DOCKER_IMAGE_TAG:-UnknownRevision}
+
 COPY Configs/owfs.conf /etc/owfs.conf
+
 
 EXPOSE 4304
 
