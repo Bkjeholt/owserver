@@ -27,6 +27,7 @@ docker run -d \
            --restart="always" \
            --privileged \
            --device /dev:/dev \
+           --network=host \
            -p 4304:4304 \
            --name $DOCKER_CONTAINER_NAME \
            --env DOCKER_CONTAINER_NAME=${DOCKER_CONTAINER_NAME} \
